@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Forge pre-push hook.
+# Install via: make install-hooks
+# Runs: unit tests with race detector (skips tests/ integration + e2e).
+#
+# Expected wall time: ~60 seconds. This gates pushes, not commits,
+# because contributors push far less often than they commit.
+set -e
+
+echo "[pre-push] go test -race (unit suite, excluding tests/)"
+go test -race $(go list ./... | grep -v /tests/)
+echo "[pre-push] ok"

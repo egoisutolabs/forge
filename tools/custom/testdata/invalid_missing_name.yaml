@@ -1,0 +1,5 @@
+description: A tool with no name
+input_schema:
+  type: object
+  properties: {}
+command: "echo hi"

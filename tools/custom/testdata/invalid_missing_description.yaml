@@ -1,0 +1,5 @@
+name: NoDesc
+input_schema:
+  type: object
+  properties: {}
+command: "echo hi"

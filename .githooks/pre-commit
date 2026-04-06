@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Forge pre-commit hook.
+# Install via: make install-hooks
+# Runs: gofmt, go vet, go mod tidy drift check.
+#
+# These are the fast checks. The expensive test run lives in pre-push.
+set -e
+
+echo "[pre-commit] gofmt"
+unformatted=$(gofmt -l .)
+if [ -n "$unformatted" ]; then
+  echo "The following files are not gofmt'd:"
+  echo "$unformatted"
+  echo
+  echo "Run 'make fmt' to fix, then stage the changes."
+  exit 1
+fi
+
+echo "[pre-commit] go vet"
+go vet ./...
+
+echo "[pre-commit] go mod tidy drift check"
+go mod tidy
+if ! git diff --quiet go.mod go.sum 2>/dev/null; then
+  echo "go.mod or go.sum drifted after 'go mod tidy'."
+  echo "Review with 'git diff go.mod go.sum' and stage the changes,"
+  echo "or run 'git checkout go.mod go.sum' to revert."
+  exit 1
+fi
+
+echo "[pre-commit] ok"

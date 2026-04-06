@@ -1,0 +1,17 @@
+name: DatabaseQuery
+description: Run a read-only SQL query against the development database
+input_schema:
+  type: object
+  properties:
+    query:
+      type: string
+      description: SQL SELECT query to execute
+    database:
+      type: string
+      description: Database name
+  required: [query]
+command: "echo query"
+timeout: 15
+read_only: true
+concurrency_safe: true
+search_hint: "sql database query postgres"

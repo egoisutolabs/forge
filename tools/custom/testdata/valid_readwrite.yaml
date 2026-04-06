@@ -1,0 +1,17 @@
+name: JiraCreate
+description: Create a Jira ticket in the current project
+input_schema:
+  type: object
+  properties:
+    summary:
+      type: string
+      description: Ticket summary
+    issue_type:
+      type: string
+      description: Issue type
+  required: [summary, issue_type]
+command: "echo create"
+timeout: 30
+read_only: false
+concurrency_safe: false
+search_hint: "jira ticket issue create"

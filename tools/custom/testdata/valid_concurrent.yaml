@@ -1,0 +1,13 @@
+name: StatusCheck
+description: Check system status
+input_schema:
+  type: object
+  properties:
+    service:
+      type: string
+      description: Service name
+  required: []
+command: "echo ok"
+timeout: 5
+read_only: true
+concurrency_safe: true

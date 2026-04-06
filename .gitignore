@@ -1,0 +1,31 @@
+# Build output
+/bin/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Go test / coverage
+*.test
+*.out
+coverage.out
+coverage.html
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Local env and credentials
+.env
+.env.*
+*.key
+*.pem
+auth.json
+
+# Forge local state in a target project
+.forge/
+_notes/

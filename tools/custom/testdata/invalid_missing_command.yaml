@@ -1,0 +1,5 @@
+name: NoCommand
+description: A tool with no command
+input_schema:
+  type: object
+  properties: {}
