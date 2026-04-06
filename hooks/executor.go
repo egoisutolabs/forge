@@ -144,6 +144,12 @@ func RunHook(ctx context.Context, config HookConfig, input HookInput) (*HookResu
 
 	cmd := exec.CommandContext(hookCtx, "sh", "-c", config.Command)
 	cmd.Stdin = bytes.NewReader(inputJSON)
+	// WaitDelay force-closes inherited I/O pipes shortly after the context
+	// expires. Without this, a grandchild process (e.g. `sleep 100` spawned
+	// by `sh`) that inherits stdout can block cmd.Output() for the full
+	// duration of its run, even though CommandContext killed the `sh`
+	// parent. See: https://pkg.go.dev/os/exec#Cmd.WaitDelay.
+	cmd.WaitDelay = 500 * time.Millisecond
 
 	out, err := cmd.Output()
 	if err != nil {

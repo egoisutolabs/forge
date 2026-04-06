@@ -14,8 +14,13 @@ import (
 	"github.com/egoisutolabs/forge/tools"
 )
 
-// sgAvailable returns true if sg is installed on PATH.
+// sgAvailable returns true if ast-grep is installed on PATH. The binary may
+// be named `ast-grep` or `sg`; we prefer `ast-grep` because on Linux `sg` is
+// shadow-utils' group-switch command and collides with ast-grep's CLI.
 func sgAvailable() bool {
+	if _, err := exec.LookPath("ast-grep"); err == nil {
+		return true
+	}
 	_, err := exec.LookPath("sg")
 	return err == nil
 }

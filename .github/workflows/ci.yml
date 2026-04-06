@@ -41,6 +41,23 @@ jobs:
       - name: Vet
         run: go vet ./...
 
+      - name: Install ast-grep
+        run: |
+          set -e
+          curl -fsSL https://github.com/ast-grep/ast-grep/releases/latest/download/app-x86_64-unknown-linux-gnu.zip -o /tmp/ast-grep.zip
+          unzip -o /tmp/ast-grep.zip -d /tmp/ast-grep-bin
+          # Archive may contain the binary as 'ast-grep' or 'sg'; install whichever we find.
+          if [ -f /tmp/ast-grep-bin/ast-grep ]; then
+            sudo install -m 755 /tmp/ast-grep-bin/ast-grep /usr/local/bin/ast-grep
+          elif [ -f /tmp/ast-grep-bin/sg ]; then
+            sudo install -m 755 /tmp/ast-grep-bin/sg /usr/local/bin/ast-grep
+          else
+            echo "ast-grep binary not found in release archive; contents:"
+            ls -la /tmp/ast-grep-bin
+            exit 1
+          fi
+          ast-grep --version
+
       - name: Unit tests with race detector
         run: go test -race $(go list ./... | grep -v /tests/)
 

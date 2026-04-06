@@ -126,14 +126,21 @@ func (t *Tool) Execute(ctx context.Context, input json.RawMessage, tctx *tools.T
 		return &models.ToolResult{Content: fmt.Sprintf("Invalid input: %s", err), IsError: true}, nil
 	}
 
-	// Check sg is available.
-	sgPath, err := exec.LookPath("sg")
+	// Check ast-grep is available. Prefer the `ast-grep` binary name to avoid
+	// a collision with shadow-utils' `sg` command on Linux (which expects a
+	// Unix group as its first argument and fails with "group 'run' does not
+	// exist" if fed an ast-grep subcommand).
+	sgPath, err := exec.LookPath("ast-grep")
 	if err != nil {
-		return &models.ToolResult{
-			Content: "sg (ast-grep) is not installed or not on PATH. " +
-				"Install it with: cargo install ast-grep, or visit https://ast-grep.github.io/guide/quick-start.html",
-			IsError: true,
-		}, nil
+		sgPath, err = exec.LookPath("sg")
+		if err != nil {
+			return &models.ToolResult{
+				Content: "ast-grep is not installed or not on PATH. " +
+					"Install it with: cargo install ast-grep, brew install ast-grep, " +
+					"or visit https://ast-grep.github.io/guide/quick-start.html",
+				IsError: true,
+			}, nil
+		}
 	}
 
 	args := buildArgs(in)

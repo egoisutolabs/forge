@@ -122,6 +122,20 @@ func (t *Tool) CheckPermissions(input json.RawMessage, _ *tools.ToolContext) (*m
 	if len(input) > 0 {
 		var in toolInput
 		if err := json.Unmarshal(input, &in); err == nil && in.FilePath != "" {
+			// Lexical sensitivity check first. Classification should not
+			// depend on filesystem state: a path like /etc/ssl/private/*.pem
+			// may exist-but-be-unreadable on Linux and not exist on macOS,
+			// and we want the same PermAsk answer in both cases.
+			cleaned := filepath.Clean(in.FilePath)
+			if isSensitivePath(cleaned) {
+				return &models.PermissionDecision{
+					Behavior: models.PermAsk,
+					Message:  fmt.Sprintf("read sensitive file %s", cleaned),
+				}, nil
+			}
+			// Resolve symlinks to catch bypass attempts where a safe-looking
+			// symlink points at a secret. Only then propagate a resolve error
+			// as PermDeny.
 			resolved, resolveErr := tools.ResolvePath(in.FilePath)
 			if resolveErr != nil {
 				return &models.PermissionDecision{
