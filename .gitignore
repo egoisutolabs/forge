@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+forge
 
 # Go test / coverage
 *.test
