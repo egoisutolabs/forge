@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/egoisutolabs/forge/tui"
+	"github.com/egoisutolabs/forge/cmd/forge/tui"
 )
 
 // --- Theme Tests ---

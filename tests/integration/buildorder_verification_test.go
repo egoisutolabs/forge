@@ -12,14 +12,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/egoisutolabs/forge/coordinator"
-	"github.com/egoisutolabs/forge/engine"
-	"github.com/egoisutolabs/forge/features"
-	"github.com/egoisutolabs/forge/models"
-	"github.com/egoisutolabs/forge/services/compact"
-	"github.com/egoisutolabs/forge/services/session"
-	"github.com/egoisutolabs/forge/services/speculation"
-	"github.com/egoisutolabs/forge/tools"
+	"github.com/egoisutolabs/forge/internal/coordinator"
+	"github.com/egoisutolabs/forge/internal/engine"
+	"github.com/egoisutolabs/forge/internal/features"
+	"github.com/egoisutolabs/forge/internal/models"
+	"github.com/egoisutolabs/forge/internal/services/compact"
+	"github.com/egoisutolabs/forge/internal/services/session"
+	"github.com/egoisutolabs/forge/internal/services/speculation"
+	"github.com/egoisutolabs/forge/internal/tools"
 	"github.com/google/uuid"
 )
 

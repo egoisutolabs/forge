@@ -14,10 +14,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/egoisutolabs/forge/models"
-	"github.com/egoisutolabs/forge/observe"
-	"github.com/egoisutolabs/forge/tools"
-	"github.com/egoisutolabs/forge/tools/custom"
+	"github.com/egoisutolabs/forge/internal/models"
+	"github.com/egoisutolabs/forge/internal/observe"
+	"github.com/egoisutolabs/forge/internal/tools"
+	"github.com/egoisutolabs/forge/internal/tools/custom"
 )
 
 // ============================================================

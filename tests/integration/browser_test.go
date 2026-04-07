@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/egoisutolabs/forge/models"
-	"github.com/egoisutolabs/forge/tools/browser"
+	"github.com/egoisutolabs/forge/internal/models"
+	"github.com/egoisutolabs/forge/internal/tools/browser"
 )
 
 // =============================================================================

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/egoisutolabs/forge/observe"
+	"github.com/egoisutolabs/forge/internal/observe"
 )
 
 func handleLogCommand(args []string) {

@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/egoisutolabs/forge/config"
+	"github.com/egoisutolabs/forge/internal/config"
 )
 
 // TestConfig_LoadFromYAML writes a temp config YAML, loads it, and verifies providers/models.

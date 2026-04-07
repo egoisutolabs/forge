@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/egoisutolabs/forge/lsp"
-	lsptool "github.com/egoisutolabs/forge/tools/lsp"
+	"github.com/egoisutolabs/forge/internal/lsp"
+	lsptool "github.com/egoisutolabs/forge/internal/tools/lsp"
 )
 
 // TestLSPTool_RegisteredInToolsList verifies the LSP tool can be instantiated and has correct metadata.

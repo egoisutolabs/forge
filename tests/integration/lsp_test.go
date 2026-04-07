@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/egoisutolabs/forge/lsp"
+	"github.com/egoisutolabs/forge/internal/lsp"
 )
 
 // =============================================================================

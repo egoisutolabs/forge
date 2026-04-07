@@ -3,8 +3,8 @@ package e2e
 import (
 	"testing"
 
-	"github.com/egoisutolabs/forge/models"
-	"github.com/egoisutolabs/forge/permissions"
+	"github.com/egoisutolabs/forge/internal/models"
+	"github.com/egoisutolabs/forge/internal/permissions"
 )
 
 // TestPermission_ReadOnlyToolGetsAllow verifies read-only tools get PermAllow

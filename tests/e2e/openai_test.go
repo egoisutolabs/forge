@@ -10,9 +10,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/egoisutolabs/forge/api"
-	"github.com/egoisutolabs/forge/config"
-	"github.com/egoisutolabs/forge/models"
+	"github.com/egoisutolabs/forge/internal/api"
+	"github.com/egoisutolabs/forge/internal/config"
+	"github.com/egoisutolabs/forge/internal/models"
 )
 
 // TestOpenAI_ImplementsCaller is a compile-time check that OpenAICaller satisfies api.Caller.

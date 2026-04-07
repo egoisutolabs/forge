@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/egoisutolabs/forge/orchestrator"
-	"github.com/egoisutolabs/forge/skills"
+	"github.com/egoisutolabs/forge/internal/orchestrator"
+	"github.com/egoisutolabs/forge/internal/skills"
 )
 
 // =============================================================================

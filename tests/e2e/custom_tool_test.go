@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/egoisutolabs/forge/tools"
-	"github.com/egoisutolabs/forge/tools/custom"
+	"github.com/egoisutolabs/forge/internal/tools"
+	"github.com/egoisutolabs/forge/internal/tools/custom"
 )
 
 // TestCustomTool_DiscoverFromYAML writes a sample YAML to a temp dir,
